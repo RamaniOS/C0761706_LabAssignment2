@@ -13,7 +13,13 @@ enum TaskType: String {
 }
 
 class AddEditTaskViewController: AbstractViewController {
-
+    
+    @IBOutlet weak var saveButton: UIButton!
+    
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var dateTextField: UITextField!
+    @IBOutlet weak var descTextView: UITextView!
+    
     private var type: TaskType = .add
     
     class func control(With type: TaskType) -> AddEditTaskViewController {
@@ -29,5 +35,31 @@ class AddEditTaskViewController: AbstractViewController {
     
     private func initViews() {
         title = type.rawValue
+        Helper.applyGradient(to: saveButton)
+        titleTextField.setBottomLine()
+        dateTextField.setBottomLine()
+        dateTextField.inputView = datePicker
+    }
+    
+    @IBAction func saveButtonClicked(_ sender: Any) {
+    }
+    
+    lazy var datePicker: UIDatePicker = {
+        let picker = UIDatePicker()
+        picker.minimumDate = Date()
+        return picker
+    }()
+}
+
+/*
+ Manage TextFiled delegate methods
+ */
+extension AddEditTaskViewController: UITextFieldDelegate {
+    
+    // MARK: TextField Delegates
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == dateTextField {
+            textField.text = datePicker.date.toString()
+        }
     }
 }

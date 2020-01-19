@@ -18,6 +18,10 @@
 		BC278E9123D4E07100FE83F4 /* AbstractViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC278E9023D4E07100FE83F4 /* AbstractViewController.swift */; };
 		BC278E9323D4E13600FE83F4 /* AddEditTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC278E9223D4E13600FE83F4 /* AddEditTaskViewController.swift */; };
 		BC7E3F0823D4E5A5001D6F9C /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7E3F0723D4E5A5001D6F9C /* PersistenceManager.swift */; };
+		BC7E3F0C23D4EAE7001D6F9C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7E3F0A23D4EAE7001D6F9C /* Extensions.swift */; };
+		BC7E3F0D23D4EAE7001D6F9C /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7E3F0B23D4EAE7001D6F9C /* Helper.swift */; };
+		BC7E3F1123D4F18A001D6F9C /* Todo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7E3F0F23D4F18A001D6F9C /* Todo+CoreDataClass.swift */; };
+		BC7E3F1223D4F18A001D6F9C /* Todo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7E3F1023D4F18A001D6F9C /* Todo+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +40,10 @@
 		BC278E9023D4E07100FE83F4 /* AbstractViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractViewController.swift; sourceTree = "<group>"; };
 		BC278E9223D4E13600FE83F4 /* AddEditTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditTaskViewController.swift; sourceTree = "<group>"; };
 		BC7E3F0723D4E5A5001D6F9C /* PersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		BC7E3F0A23D4EAE7001D6F9C /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		BC7E3F0B23D4EAE7001D6F9C /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		BC7E3F0F23D4F18A001D6F9C /* Todo+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Todo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		BC7E3F1023D4F18A001D6F9C /* Todo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Todo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,11 +100,13 @@
 				BC278E7A23D4DF3300FE83F4 /* SceneDelegate.swift */,
 				BC278E7E23D4DF3300FE83F4 /* Main.storyboard */,
 				BC278E8423D4DF3400FE83F4 /* Assets.xcassets */,
-				BC278E8F23D4DF6700FE83F4 /* ViewController */,
-				BC7E3F0623D4E57E001D6F9C /* Store */,
 				BC278E8623D4DF3400FE83F4 /* LaunchScreen.storyboard */,
 				BC278E8923D4DF3400FE83F4 /* Info.plist */,
 				BC278E8123D4DF3300FE83F4 /* C0761706_LabAssignment2.xcdatamodeld */,
+				BC7E3F0E23D4F171001D6F9C /* Model */,
+				BC278E8F23D4DF6700FE83F4 /* ViewController */,
+				BC7E3F0623D4E57E001D6F9C /* Store */,
+				BC7E3F0923D4EAE7001D6F9C /* Libs */,
 			);
 			path = C0761706_LabAssignment2;
 			sourceTree = "<group>";
@@ -117,6 +127,24 @@
 				BC7E3F0723D4E5A5001D6F9C /* PersistenceManager.swift */,
 			);
 			path = Store;
+			sourceTree = "<group>";
+		};
+		BC7E3F0923D4EAE7001D6F9C /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				BC7E3F0A23D4EAE7001D6F9C /* Extensions.swift */,
+				BC7E3F0B23D4EAE7001D6F9C /* Helper.swift */,
+			);
+			path = Libs;
+			sourceTree = "<group>";
+		};
+		BC7E3F0E23D4F171001D6F9C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BC7E3F0F23D4F18A001D6F9C /* Todo+CoreDataClass.swift */,
+				BC7E3F1023D4F18A001D6F9C /* Todo+CoreDataProperties.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,7 +265,11 @@
 				BC278E7D23D4DF3300FE83F4 /* SearchViewController.swift in Sources */,
 				BC7E3F0823D4E5A5001D6F9C /* PersistenceManager.swift in Sources */,
 				BC278E9323D4E13600FE83F4 /* AddEditTaskViewController.swift in Sources */,
+				BC7E3F1123D4F18A001D6F9C /* Todo+CoreDataClass.swift in Sources */,
+				BC7E3F0C23D4EAE7001D6F9C /* Extensions.swift in Sources */,
 				BC278E9123D4E07100FE83F4 /* AbstractViewController.swift in Sources */,
+				BC7E3F0D23D4EAE7001D6F9C /* Helper.swift in Sources */,
+				BC7E3F1223D4F18A001D6F9C /* Todo+CoreDataProperties.swift in Sources */,
 				BC278E7923D4DF3300FE83F4 /* AppDelegate.swift in Sources */,
 				BC278E7B23D4DF3300FE83F4 /* SceneDelegate.swift in Sources */,
 				BC278E8323D4DF3300FE83F4 /* C0761706_LabAssignment2.xcdatamodeld in Sources */,
