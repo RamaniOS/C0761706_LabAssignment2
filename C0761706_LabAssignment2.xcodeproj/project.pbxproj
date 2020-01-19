@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,7 @@
 		BC278E8823D4DF3400FE83F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC278E8623D4DF3400FE83F4 /* LaunchScreen.storyboard */; };
 		BC278E9123D4E07100FE83F4 /* AbstractViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC278E9023D4E07100FE83F4 /* AbstractViewController.swift */; };
 		BC278E9323D4E13600FE83F4 /* AddEditTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC278E9223D4E13600FE83F4 /* AddEditTaskViewController.swift */; };
+		BC7E3F0823D4E5A5001D6F9C /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7E3F0723D4E5A5001D6F9C /* PersistenceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		BC278E8923D4DF3400FE83F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC278E9023D4E07100FE83F4 /* AbstractViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractViewController.swift; sourceTree = "<group>"; };
 		BC278E9223D4E13600FE83F4 /* AddEditTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditTaskViewController.swift; sourceTree = "<group>"; };
+		BC7E3F0723D4E5A5001D6F9C /* PersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +56,6 @@
 				04E5211AB86CD7D4620601C2 /* Pods-C0761706_LabAssignment2.debug.xcconfig */,
 				7247B43CB2FE77D8F9D8029E /* Pods-C0761706_LabAssignment2.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -92,6 +93,7 @@
 				BC278E7E23D4DF3300FE83F4 /* Main.storyboard */,
 				BC278E8423D4DF3400FE83F4 /* Assets.xcassets */,
 				BC278E8F23D4DF6700FE83F4 /* ViewController */,
+				BC7E3F0623D4E57E001D6F9C /* Store */,
 				BC278E8623D4DF3400FE83F4 /* LaunchScreen.storyboard */,
 				BC278E8923D4DF3400FE83F4 /* Info.plist */,
 				BC278E8123D4DF3300FE83F4 /* C0761706_LabAssignment2.xcdatamodeld */,
@@ -107,6 +109,14 @@
 				BC278E9223D4E13600FE83F4 /* AddEditTaskViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		BC7E3F0623D4E57E001D6F9C /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				BC7E3F0723D4E5A5001D6F9C /* PersistenceManager.swift */,
+			);
+			path = Store;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC278E7D23D4DF3300FE83F4 /* SearchViewController.swift in Sources */,
+				BC7E3F0823D4E5A5001D6F9C /* PersistenceManager.swift in Sources */,
 				BC278E9323D4E13600FE83F4 /* AddEditTaskViewController.swift in Sources */,
 				BC278E9123D4E07100FE83F4 /* AbstractViewController.swift in Sources */,
 				BC278E7923D4DF3300FE83F4 /* AppDelegate.swift in Sources */,
