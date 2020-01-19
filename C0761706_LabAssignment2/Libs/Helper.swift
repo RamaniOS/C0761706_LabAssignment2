@@ -23,4 +23,11 @@ class Helper {
         layer.colors = [color0, color1]
         button.layer.insertSublayer(layer, at: 0)
     }
+    
+    static func showAlert(with message: String, controller: AbstractViewController) {
+        let alert = UIAlertController.alert("Alert!", message: message, buttons: [
+            "Cancel", "Ok"]) { (_, _) in
+        }
+        controller.present(alert, animated: true, completion: nil)
+    }
 }

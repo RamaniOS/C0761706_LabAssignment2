@@ -19,6 +19,6 @@ extension Todo {
     @NSManaged public var title: String
     @NSManaged public var desc: String
     @NSManaged public var dateTime: Date
-    @NSManaged public var totalDays: Int32
+    @NSManaged public var totalDays: Double
 
 }
