@@ -10,7 +10,7 @@
         <!--Todo List-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="SearchViewController" customModule="C0761706_LabAssignment2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchViewController" id="BYZ-38-t0r" customClass="SearchViewController" customModule="C0761706_LabAssignment2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -18,12 +18,31 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Todo List" id="KVe-96-XMZ">
-                        <barButtonItem key="rightBarButtonItem" title="Add Task" id="IfA-UW-Ykx"/>
+                        <barButtonItem key="rightBarButtonItem" title="Add Task" id="IfA-UW-Ykx">
+                            <connections>
+                                <action selector="addTaskButtonClicked:" destination="BYZ-38-t0r" id="OxO-kX-tL8"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="114.50892857142857"/>
+            <point key="canvasLocation" x="981" y="115"/>
+        </scene>
+        <!--Add Edit Task View Controller-->
+        <scene sceneID="0E8-gv-0oH">
+            <objects>
+                <viewController storyboardIdentifier="AddEditTaskViewController" id="mTm-KX-HFb" customClass="AddEditTaskViewController" customModule="C0761706_LabAssignment2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="O9z-Ug-aQD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="G9q-YN-8g9"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="90w-M0-qER" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1849" y="115"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="G3r-SY-ded">

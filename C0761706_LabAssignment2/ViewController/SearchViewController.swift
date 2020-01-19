@@ -13,5 +13,9 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    @IBAction func addTaskButtonClicked(_ sender: Any) {
+        navigationController?.pushViewController(AddEditTaskViewController.control(With: .add), animated: true)
+    }
 }
 

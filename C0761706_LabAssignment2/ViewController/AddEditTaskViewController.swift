@@ -14,7 +14,20 @@ enum TaskType: String {
 
 class AddEditTaskViewController: AbstractViewController {
 
+    private var type: TaskType = .add
+    
+    class func control(With type: TaskType) -> AddEditTaskViewController {
+        let control = self.control as! AddEditTaskViewController
+        control.type = type
+        return control
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        initViews()
+    }
+    
+    private func initViews() {
+        title = type.rawValue
     }
 }
