@@ -57,11 +57,24 @@ class AddEditTaskViewController: AbstractViewController {
             todo.desc = descTextView.text!
             do {
                 try persistenceManager.context.save()
+                previousControl?.refresh()
                 navigationController?.popViewController(animated: true)
                 Helper.showAlert(with: "Todo Saved Successfully.", controller: self)
             } catch {
                 Helper.showAlert(with: error.localizedDescription, controller: self)
             }
         }
+    }
+    
+    // MARK: Get previous controller
+    private var previousControl: SearchViewController? {
+        let viewControls = navigationController?.viewControllers
+        if let count = viewControls?.count, count >= 2 {
+            let control = viewControls?[count - 2]
+            if control is SearchViewController, let customer = control as? SearchViewController {
+                return customer
+            }
+        }
+        return nil
     }
 }
