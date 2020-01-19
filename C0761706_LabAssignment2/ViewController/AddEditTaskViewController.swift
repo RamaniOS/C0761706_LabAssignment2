@@ -57,6 +57,7 @@ class AddEditTaskViewController: AbstractViewController {
             todo.desc = descTextView.text!
             do {
                 try persistenceManager.context.save()
+                navigationController?.popViewController(animated: true)
                 Helper.showAlert(with: "Todo Saved Successfully.", controller: self)
             } catch {
                 Helper.showAlert(with: error.localizedDescription, controller: self)
