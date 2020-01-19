@@ -22,11 +22,12 @@ class AddEditTaskViewController: AbstractViewController {
     
     private var type: TaskType = .add
     private let persistenceManager = PersistenceManager.shared
+    private var task: Todo?
     
-    
-    class func control(With type: TaskType) -> AddEditTaskViewController {
+    class func control(With type: TaskType, and todo: Todo? = nil) -> AddEditTaskViewController {
         let control = self.control as! AddEditTaskViewController
         control.type = type
+        control.task = todo
         return control
     }
     
@@ -40,6 +41,7 @@ class AddEditTaskViewController: AbstractViewController {
         Helper.applyGradient(to: saveButton)
         titleTextField.setBottomLine()
         daysTextField.setBottomLine()
+        if let todo = task { self.todo = todo }
     }
     
     @IBAction func saveButtonClicked(_ sender: Any) {
@@ -76,5 +78,14 @@ class AddEditTaskViewController: AbstractViewController {
             }
         }
         return nil
+    }
+    
+    var todo: Todo? {
+        didSet {
+            guard let todo = todo else { return }
+            titleTextField.text = todo.title
+            daysTextField.text = "\(todo.totalDays)"
+            descTextView.text = todo.desc
+        }
     }
 }
