@@ -52,19 +52,31 @@ class AddEditTaskViewController: AbstractViewController {
         } else if !descTextView.hasText {
             Helper.showAlert(with: "Please enter todo desc.", controller: self)
         } else {
-            let todo = Todo(context: persistenceManager.context)
-            todo.title = titleTextField.text!
-            todo.totalDays = (daysTextField.text! as NSString).doubleValue
-            todo.dateTime = Date()
-            todo.desc = descTextView.text!
-            do {
-                try persistenceManager.context.save()
-                previousControl?.refresh()
-                navigationController?.popViewController(animated: true)
-                Helper.showAlert(with: "Todo Saved Successfully.", controller: self)
-            } catch {
-                Helper.showAlert(with: error.localizedDescription, controller: self)
+            if type == .add {
+                let todo = Todo(context: persistenceManager.context)
+                createModelObject(todo: todo)
+            } else {
+                persistenceManager.update(type: Todo.self, todo: todo!) { (todoObject) in
+                    if let todo = todoObject as? Todo {
+                         self.createModelObject(todo: todo)
+                    }
+                }
             }
+        }
+    }
+    
+    func createModelObject(todo: Todo) {
+        todo.title = titleTextField.text!
+        todo.totalDays = (daysTextField.text! as NSString).doubleValue
+        todo.dateTime = Date()
+        todo.desc = descTextView.text!
+        do {
+            try persistenceManager.context.save()
+            previousControl?.refresh()
+            navigationController?.popViewController(animated: true)
+            Helper.showAlert(with: type == .add ? "Todo Saved Successfully." : "Todo Updated Successfully.", controller: self)
+        } catch {
+            Helper.showAlert(with: error.localizedDescription, controller: self)
         }
     }
     

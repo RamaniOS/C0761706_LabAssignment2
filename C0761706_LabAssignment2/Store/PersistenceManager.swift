@@ -66,14 +66,24 @@ class PersistenceManager {
     func fetch<T: NSManagedObject>(type: T.Type, completion: @escaping ([T]) -> Void) {
         let request = NSFetchRequest<T>(entityName: String(describing: type))
         do {
-            let ob = try context.fetch(request)
-            completion(ob)
+            let objects = try context.fetch(request)
+            completion(objects)
         } catch {
             completion([])
         }
     }
     
-    func update<T: NSManagedObject>(type: T.Type, comp: @escaping(_: Bool) -> Void) {
-        
+    func update<T: NSManagedObject>(type: T.Type, todo: NSManagedObject, completion: @escaping(_: NSManagedObject?) -> Void) {
+        let request = NSFetchRequest<T>(entityName: String(describing: type))
+        do {
+            let objects = try context.fetch(request)
+            for object in objects {
+                if object == todo {
+                    completion(object)
+                }
+            }
+        } catch {
+            completion(nil)
+        }
     }
 }
