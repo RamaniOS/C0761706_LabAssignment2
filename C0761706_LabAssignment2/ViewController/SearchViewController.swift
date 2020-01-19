@@ -21,7 +21,7 @@ class SearchViewController: AbstractViewController {
     
     private var items: [Todo]? {
         didSet {
-            noItemsLabel.isHidden = items!√.count > 0
+            noItemsLabel.isHidden = items!.count > 0
         }
     }
     
