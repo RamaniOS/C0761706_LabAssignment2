@@ -67,7 +67,7 @@ class PersistenceManager {
         let request = NSFetchRequest<T>(entityName: String(describing: type))
         do {
             let objects = try context.fetch(request)
-            completion(objects)
+            completion(objects.reversed())
         } catch {
             completion([])
         }
