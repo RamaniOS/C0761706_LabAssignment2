@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  AddEditTaskViewController.swift
 //  C0761706_LabAssignment2
 //
 //  Created by Ramanpreet Singh on 2020-01-19.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+enum TaskType: String {
+    case add = "Add Task", edit = "Edit Task"
+}
+
+class AddEditTaskViewController: AbstractViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
-
-
 }
-
