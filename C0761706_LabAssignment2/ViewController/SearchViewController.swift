@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: AbstractViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var noItemsLabel: UILabel!
@@ -19,7 +19,11 @@ class SearchViewController: UIViewController {
         fetchData()
     }
     
-    private var items: [Todo]?
+    private var items: [Todo]? {
+        didSet {
+            noItemsLabel.isHidden = items!√.count > 0
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +34,6 @@ class SearchViewController: UIViewController {
     private func fetchData() {
         persistenceManager.fetch(type: Todo.self) { (todos) in
             self.items = todos
-            self.noItemsLabel.isHidden = todos.count > 0
             self.tableView.reloadData()
         }
     }
@@ -65,8 +68,14 @@ extension CustomerListControl: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            items?.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            let todo = items?[indexPath.row]
+            persistenceManager.delete(type: Todo.self, todo: todo!) { (flag) in
+                if flag {
+                    self.items?.remove(at: indexPath.row)
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                    Helper.showAlert(with: "Todo deleted successfully.", controller: self)
+                }
+            }
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }

@@ -84,4 +84,22 @@ class PersistenceManager {
             completion(nil)
         }
     }
+    
+    func delete<T: NSManagedObject>(type: T.Type, todo: NSManagedObject, completion: @escaping(_: Bool) -> Void) {
+        let request = NSFetchRequest<T>(entityName: String(describing: type))
+        do {
+            let objects = try context.fetch(request)
+            for object in objects where object == todo {
+                context.delete(todo)
+                do {
+                    try context.save()
+                    completion(true)
+                } catch {
+                    completion(false)
+                }
+            }
+        } catch {
+            completion(false)
+        }
+    }
 }
