@@ -58,7 +58,7 @@ class AddEditTaskViewController: AbstractViewController {
             } else {
                 persistenceManager.update(type: Todo.self, todo: todo!) { (todoObject) in
                     if let todo = todoObject as? Todo {
-                         self.createModelObject(todo: todo)
+                        self.createModelObject(todo: todo)
                     }
                 }
             }
@@ -74,7 +74,9 @@ class AddEditTaskViewController: AbstractViewController {
             try persistenceManager.context.save()
             previousControl?.refresh()
             navigationController?.popViewController(animated: true)
-            Helper.showAlert(with: type == .add ? "Todo Saved Successfully." : "Todo Updated Successfully.", controller: self)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
+                Helper.showAlert(with: self.type == .add ? "Todo Saved Successfully." : "Todo Updated Successfully.", controller: self)
+            }
         } catch {
             Helper.showAlert(with: error.localizedDescription, controller: self)
         }
