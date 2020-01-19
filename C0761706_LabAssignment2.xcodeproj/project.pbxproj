@@ -20,8 +20,8 @@
 		BC7E3F0823D4E5A5001D6F9C /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7E3F0723D4E5A5001D6F9C /* PersistenceManager.swift */; };
 		BC7E3F0C23D4EAE7001D6F9C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7E3F0A23D4EAE7001D6F9C /* Extensions.swift */; };
 		BC7E3F0D23D4EAE7001D6F9C /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7E3F0B23D4EAE7001D6F9C /* Helper.swift */; };
-		BC7E3F1123D4F18A001D6F9C /* Todo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7E3F0F23D4F18A001D6F9C /* Todo+CoreDataClass.swift */; };
-		BC7E3F1223D4F18A001D6F9C /* Todo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7E3F1023D4F18A001D6F9C /* Todo+CoreDataProperties.swift */; };
+		BC7E3F1923D4F4EF001D6F9C /* Todo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7E3F1723D4F4EE001D6F9C /* Todo+CoreDataClass.swift */; };
+		BC7E3F1A23D4F4EF001D6F9C /* Todo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7E3F1823D4F4EF001D6F9C /* Todo+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,8 +42,8 @@
 		BC7E3F0723D4E5A5001D6F9C /* PersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		BC7E3F0A23D4EAE7001D6F9C /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BC7E3F0B23D4EAE7001D6F9C /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
-		BC7E3F0F23D4F18A001D6F9C /* Todo+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Todo+CoreDataClass.swift"; sourceTree = "<group>"; };
-		BC7E3F1023D4F18A001D6F9C /* Todo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Todo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		BC7E3F1723D4F4EE001D6F9C /* Todo+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Todo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		BC7E3F1823D4F4EF001D6F9C /* Todo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Todo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,8 +141,8 @@
 		BC7E3F0E23D4F171001D6F9C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BC7E3F0F23D4F18A001D6F9C /* Todo+CoreDataClass.swift */,
-				BC7E3F1023D4F18A001D6F9C /* Todo+CoreDataProperties.swift */,
+				BC7E3F1723D4F4EE001D6F9C /* Todo+CoreDataClass.swift */,
+				BC7E3F1823D4F4EF001D6F9C /* Todo+CoreDataProperties.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -265,11 +265,11 @@
 				BC278E7D23D4DF3300FE83F4 /* SearchViewController.swift in Sources */,
 				BC7E3F0823D4E5A5001D6F9C /* PersistenceManager.swift in Sources */,
 				BC278E9323D4E13600FE83F4 /* AddEditTaskViewController.swift in Sources */,
-				BC7E3F1123D4F18A001D6F9C /* Todo+CoreDataClass.swift in Sources */,
+				BC7E3F1923D4F4EF001D6F9C /* Todo+CoreDataClass.swift in Sources */,
 				BC7E3F0C23D4EAE7001D6F9C /* Extensions.swift in Sources */,
 				BC278E9123D4E07100FE83F4 /* AbstractViewController.swift in Sources */,
 				BC7E3F0D23D4EAE7001D6F9C /* Helper.swift in Sources */,
-				BC7E3F1223D4F18A001D6F9C /* Todo+CoreDataProperties.swift in Sources */,
+				BC7E3F1A23D4F4EF001D6F9C /* Todo+CoreDataProperties.swift in Sources */,
 				BC278E7923D4DF3300FE83F4 /* AppDelegate.swift in Sources */,
 				BC278E7B23D4DF3300FE83F4 /* SceneDelegate.swift in Sources */,
 				BC278E8323D4DF3300FE83F4 /* C0761706_LabAssignment2.xcdatamodeld in Sources */,

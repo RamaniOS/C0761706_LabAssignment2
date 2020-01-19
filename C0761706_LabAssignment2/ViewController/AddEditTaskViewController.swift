@@ -16,8 +16,8 @@ class AddEditTaskViewController: AbstractViewController {
     
     @IBOutlet weak var saveButton: UIButton!
     
+    @IBOutlet weak var daysTextField: UITextField!
     @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var descTextView: UITextView!
     
     private var type: TaskType = .add
@@ -37,29 +37,9 @@ class AddEditTaskViewController: AbstractViewController {
         title = type.rawValue
         Helper.applyGradient(to: saveButton)
         titleTextField.setBottomLine()
-        dateTextField.setBottomLine()
-        dateTextField.inputView = datePicker
+        daysTextField.setBottomLine()
     }
     
     @IBAction func saveButtonClicked(_ sender: Any) {
-    }
-    
-    lazy var datePicker: UIDatePicker = {
-        let picker = UIDatePicker()
-        picker.minimumDate = Date()
-        return picker
-    }()
-}
-
-/*
- Manage TextFiled delegate methods
- */
-extension AddEditTaskViewController: UITextFieldDelegate {
-    
-    // MARK: TextField Delegates
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if textField == dateTextField {
-            textField.text = datePicker.date.toString()
-        }
     }
 }
