@@ -27,7 +27,7 @@ class TodoCell: UITableViewCell {
                 daysLabel.text = "Total Days: \(todo.totalDays)"
                 descLabel.text = todo.desc
                 dateLabel.text = todo.dateTime.toString()
-                daysWorkedLabel.text = "Days Worked: \(todo.daysWorked)"
+                daysWorkedLabel.text = todo.isDone ? "Task Completed" : "Days Worked: \(todo.daysWorked)"
             }
         }
     }

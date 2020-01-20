@@ -83,6 +83,9 @@ extension CustomerListControl: UITableViewDelegate, UITableViewDataSource {
             self.persistenceManager.update(type: Todo.self, todo: todo!) { (todoObject) in
                 if let todo = todoObject as? Todo {
                     todo.daysWorked += 1
+                    if todo.totalDays == todo.daysWorked {
+                        todo.isDone = true
+                    }
                 }
             }
             do {
