@@ -119,6 +119,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Todo List" id="KVe-96-XMZ">
+                        <barButtonItem key="leftBarButtonItem" title="Sort by title" id="Xxj-SG-eXz">
+                            <connections>
+                                <action selector="sortButtonClicked:" destination="BYZ-38-t0r" id="gAg-Bk-lac"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add Task" image="plus.circle.fill" catalog="system" id="IfA-UW-Ykx">
                             <connections>
                                 <action selector="addTaskButtonClicked:" destination="BYZ-38-t0r" id="OxO-kX-tL8"/>
@@ -127,6 +132,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="noItemsLabel" destination="sOS-oY-NPO" id="49e-EJ-2L6"/>
+                        <outlet property="sortButton" destination="Xxj-SG-eXz" id="or5-ba-76v"/>
                         <outlet property="tableView" destination="Q5D-8h-ChQ" id="ufK-mc-On2"/>
                     </connections>
                 </viewController>

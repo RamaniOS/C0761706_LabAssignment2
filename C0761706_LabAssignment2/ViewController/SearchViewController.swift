@@ -12,6 +12,7 @@ class SearchViewController: AbstractViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var noItemsLabel: UILabel!
+    @IBOutlet weak var sortButton: UIBarButtonItem!
     
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -27,6 +28,12 @@ class SearchViewController: AbstractViewController {
             noItemsLabel.isHidden = items!.count > 0
         }
     }
+    
+    private enum SortType: String {
+        case byDate = "Sort by Title", byTitle = "Sort by Date"
+    }
+    
+    private var sortType: SortType = .byTitle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +64,19 @@ class SearchViewController: AbstractViewController {
     
     @IBAction func addTaskButtonClicked(_ sender: Any) {
         navigationController?.pushViewController(AddEditTaskViewController.control(With: .add), animated: true)
+    }
+    
+    @IBAction func sortButtonClicked(_ sender: UIBarButtonItem) {
+        sortButton.title = sortType.rawValue
+        switch sortType {
+        case .byDate:
+            sortType = .byTitle
+            items?.sort { (($0.dateTime).compare($1.dateTime)) == .orderedDescending }
+        case .byTitle:
+            sortType = .byDate
+            items?.sort { ($0.title).lowercased() < ($1.title).lowercased() }
+        }
+        tableView.reloadData()
     }
     
     private var cellClass: TodoCell.Type {
