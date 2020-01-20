@@ -67,8 +67,8 @@ extension CustomerListControl: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let todo = self.items?[indexPath.row]
         let deleteItem = UIContextualAction(style: .destructive, title: "Delete") {  (contextualAction, view, boolValue) in
-            let todo = self.items?[indexPath.row]
             self.persistenceManager.delete(type: Todo.self, todo: todo!) { (flag) in
                 if flag {
                     self.items?.remove(at: indexPath.row)
@@ -77,10 +77,27 @@ extension CustomerListControl: UITableViewDelegate, UITableViewDataSource {
                 }
             }
         }
+        
         let editItem = UIContextualAction(style: .normal, title: "Add a day") {  (contextualAction, view, boolValue) in
-            
+            let todo = self.items?[indexPath.row]
+            self.persistenceManager.update(type: Todo.self, todo: todo!) { (todoObject) in
+                if let todo = todoObject as? Todo {
+                    todo.daysWorked += 1
+                }
+            }
+            do {
+                try self.persistenceManager.context.save()
+            } catch {
+                Helper.showAlert(with: error.localizedDescription, controller: self)
+            }
+            tableView.reloadData()
         }
-        let swipeActions = UISwipeActionsConfiguration(actions: [deleteItem, editItem])
+        var swipeActions = UISwipeActionsConfiguration()
+        if todo!.totalDays > todo!.daysWorked {
+            swipeActions = UISwipeActionsConfiguration(actions: [deleteItem, editItem])
+        } else {
+            swipeActions = UISwipeActionsConfiguration(actions: [deleteItem])
+        }
         return swipeActions
     }
 }
