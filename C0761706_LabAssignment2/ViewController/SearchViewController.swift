@@ -13,6 +13,9 @@ class SearchViewController: AbstractViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var noItemsLabel: UILabel!
     
+    let searchController = UISearchController(searchResultsController: nil)
+    
+    // Variables
     private let persistenceManager = PersistenceManager.shared
     
     internal func refresh() {
@@ -27,8 +30,22 @@ class SearchViewController: AbstractViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initViews()
+    }
+
+    private func initViews() {
         tableView.tableFooterView = UIView()
         fetchData()
+        setupSearchBar()
+    }
+    
+    private func setupSearchBar() {
+        navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.searchBar.delegate = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
     }
     
     private func fetchData() {
@@ -105,3 +122,13 @@ extension CustomerListControl: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+/*
+ Manage search bar delegates
+ */
+extension SearchViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let search = searchBar.text else { return }
+        print(search)
+    }
+}
