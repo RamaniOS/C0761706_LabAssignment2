@@ -103,5 +103,19 @@ class PersistenceManager {
         }
     }
     
+    func search<T: NSManagedObject>(type: T.Type, keyword: String, completion: @escaping(_: [T]) -> Void) {
+        let request = NSFetchRequest<T>(entityName: String(describing: type))
+        
+        let predicate = NSPredicate(format: "title contains[cd] %@ OR desc contains[cd] %@", keyword, keyword)
+
+        request.predicate = predicate
+        
+        do {
+            let objects = try context.fetch(request)
+            completion(objects.reversed())
+        } catch {
+            completion([])
+        }
+    }
     
 }

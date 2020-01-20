@@ -149,6 +149,14 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let search = searchBar.text else { return }
-        print(search)
+        persistenceManager.search(type: Todo.self, keyword: search) { (todos) in
+            self.items = todos
+            self.tableView.reloadData()
+        }
     }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        refresh()
+    }
+    
 }
