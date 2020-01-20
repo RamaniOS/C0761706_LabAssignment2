@@ -139,7 +139,7 @@ extension Float {
  */
 extension Date {
     
-    func toString(withFormat format: String = "h:mm a, EEEE, dd MMMM, YYYY") -> String {
+    func toString(withFormat format: String = "h:mm a,dd/MM/YYYY") -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
         return dateFormatter.string(from: self)

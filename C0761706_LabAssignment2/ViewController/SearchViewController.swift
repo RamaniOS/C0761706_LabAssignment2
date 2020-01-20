@@ -66,19 +66,22 @@ extension CustomerListControl: UITableViewDelegate, UITableViewDataSource {
         navigationController?.pushViewController(AddEditTaskViewController.control(With: .edit, and: items?[indexPath.row]), animated: true)
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let todo = items?[indexPath.row]
-            persistenceManager.delete(type: Todo.self, todo: todo!) { (flag) in
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteItem = UIContextualAction(style: .destructive, title: "Delete") {  (contextualAction, view, boolValue) in
+            let todo = self.items?[indexPath.row]
+            self.persistenceManager.delete(type: Todo.self, todo: todo!) { (flag) in
                 if flag {
                     self.items?.remove(at: indexPath.row)
                     tableView.deleteRows(at: [indexPath], with: .fade)
                     Helper.showAlert(with: "Todo deleted successfully.", controller: self)
                 }
             }
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
+        let editItem = UIContextualAction(style: .normal, title: "Add a day") {  (contextualAction, view, boolValue) in
+            
+        }
+        let swipeActions = UISwipeActionsConfiguration(actions: [deleteItem, editItem])
+        return swipeActions
     }
 }
 

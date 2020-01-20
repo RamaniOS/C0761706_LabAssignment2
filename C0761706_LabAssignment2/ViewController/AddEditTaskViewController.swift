@@ -54,6 +54,8 @@ class AddEditTaskViewController: AbstractViewController {
         } else {
             if type == .add {
                 let todo = Todo(context: persistenceManager.context)
+                todo.daysWorked = 0
+                todo.isDone = false
                 createModelObject(todo: todo)
             } else {
                 persistenceManager.update(type: Todo.self, todo: todo!) { (todoObject) in
