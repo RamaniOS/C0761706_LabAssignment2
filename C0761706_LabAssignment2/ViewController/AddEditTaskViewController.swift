@@ -51,6 +51,8 @@ class AddEditTaskViewController: AbstractViewController {
             Helper.showAlert(with: "Please enter total number of days to complete todo.", controller: self)
         } else if daysTextField.text == "0" {
             Helper.showAlert(with: "Total number of days should be greater than zero.", controller: self)
+        } else if type == .edit && Int16((daysTextField.text! as NSString).intValue) < todo!.daysWorked {
+            Helper.showAlert(with: "Total number of days should be greater than days worked.", controller: self)
         } else if !descTextView.hasText {
             Helper.showAlert(with: "Please enter todo desc.", controller: self)
         } else {
@@ -62,7 +64,6 @@ class AddEditTaskViewController: AbstractViewController {
             } else {
                 persistenceManager.update(type: Todo.self, todo: todo!) { (todoObject) in
                     if let todo = todoObject as? Todo {
-                        todo.isDone = todo.totalDays == todo.daysWorked
                         self.createModelObject(todo: todo)
                     }
                 }
@@ -75,6 +76,7 @@ class AddEditTaskViewController: AbstractViewController {
         todo.totalDays = Int16((daysTextField.text! as NSString).intValue)
         todo.dateTime = Date()
         todo.desc = descTextView.text!
+        todo.isDone = todo.totalDays == todo.daysWorked
         do {
             try persistenceManager.context.save()
             previousControl?.refresh()
