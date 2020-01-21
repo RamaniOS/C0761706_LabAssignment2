@@ -68,7 +68,7 @@ class AddEditTaskViewController: AbstractViewController {
         }
     }
     
-    func createModelObject(todo: Todo) {
+    private func createModelObject(todo: Todo) {
         todo.title = titleTextField.text!
         todo.totalDays = Int16((daysTextField.text! as NSString).intValue)
         todo.dateTime = Date()
@@ -97,7 +97,7 @@ class AddEditTaskViewController: AbstractViewController {
         return nil
     }
     
-    var todo: Todo? {
+    private var todo: Todo? {
         didSet {
             guard let todo = todo else { return }
             titleTextField.text = todo.title
