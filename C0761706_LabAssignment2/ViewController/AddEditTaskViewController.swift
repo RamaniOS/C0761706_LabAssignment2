@@ -60,6 +60,7 @@ class AddEditTaskViewController: AbstractViewController {
             } else {
                 persistenceManager.update(type: Todo.self, todo: todo!) { (todoObject) in
                     if let todo = todoObject as? Todo {
+                        todo.isDone = todo.totalDays == todo.daysWorked
                         self.createModelObject(todo: todo)
                     }
                 }
@@ -69,7 +70,7 @@ class AddEditTaskViewController: AbstractViewController {
     
     func createModelObject(todo: Todo) {
         todo.title = titleTextField.text!
-        todo.totalDays = (daysTextField.text! as NSString).doubleValue
+        todo.totalDays = Int16((daysTextField.text! as NSString).intValue)
         todo.dateTime = Date()
         todo.desc = descTextView.text!
         do {

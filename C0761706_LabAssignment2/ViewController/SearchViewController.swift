@@ -14,14 +14,10 @@ class SearchViewController: AbstractViewController {
     @IBOutlet weak var noItemsLabel: UILabel!
     @IBOutlet weak var sortButton: UIBarButtonItem!
     
-    let searchController = UISearchController(searchResultsController: nil)
+    private let searchController = UISearchController(searchResultsController: nil)
     
     // Variables
     private let persistenceManager = PersistenceManager.shared
-    
-    internal func refresh() {
-        fetchData()
-    }
     
     private var items: [Todo]? {
         didSet {
@@ -33,7 +29,7 @@ class SearchViewController: AbstractViewController {
         case byDate = "Sort by Title", byTitle = "Sort by Date"
     }
     
-    private var sortType: SortType = .byTitle
+    private var sortType: SortType = .byDate
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +54,7 @@ class SearchViewController: AbstractViewController {
     private func fetchData() {
         persistenceManager.fetch(type: Todo.self) { (todos) in
             self.items = todos
-            self.tableView.reloadData()
+            self.sortTodo()
         }
     }
     
@@ -68,6 +64,14 @@ class SearchViewController: AbstractViewController {
     
     @IBAction func sortButtonClicked(_ sender: UIBarButtonItem) {
         sortButton.title = sortType.rawValue
+        sortTodo()
+    }
+    
+    private var cellClass: TodoCell.Type {
+        return TodoCell.self
+    }
+    
+    private func sortTodo() {
         switch sortType {
         case .byDate:
             sortType = .byTitle
@@ -79,8 +83,17 @@ class SearchViewController: AbstractViewController {
         tableView.reloadData()
     }
     
-    private var cellClass: TodoCell.Type {
-        return TodoCell.self
+    internal func refresh() {
+        reshuffleSortType()
+        fetchData()
+    }
+    
+    private func reshuffleSortType() {
+        if sortType == .byDate {
+            sortType = .byTitle
+        } else {
+            sortType = .byDate
+        }
     }
 }
 
@@ -151,12 +164,12 @@ extension SearchViewController: UISearchBarDelegate {
         guard let search = searchBar.text else { return }
         persistenceManager.search(type: Todo.self, keyword: search) { (todos) in
             self.items = todos
-            self.tableView.reloadData()
+            self.reshuffleSortType()
+            self.sortTodo()
         }
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         refresh()
     }
-    
 }
