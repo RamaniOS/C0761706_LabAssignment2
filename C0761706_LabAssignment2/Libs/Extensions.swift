@@ -14,12 +14,6 @@ extension UITextField {
         return text!.trimmingCharacters(in: .whitespacesAndNewlines).count > 0
     }
     
-    var isValidEmail: Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
-        return emailTest.evaluate(with: text)
-    }
-    
     func setLeftPading(_ size: CGFloat) {
         leftViewMode = .always
         let leftPadView = UIView(frame: CGRect(x: 0, y: 0, width: size, height: bounds.size.height))
@@ -55,54 +49,10 @@ extension UIAlertController {
     }
 }
 
-extension UIStoryboard {
-
-    class var main: UIStoryboard {
-        let storyboardName: String = (Bundle.main.object(forInfoDictionaryKey: "UIMainStoryboardFile") as? String)!
-        return UIStoryboard(name: storyboardName, bundle: nil)
-    }
-}
-
-/*
- Extension for Int
-*/
-extension Int {
-    
-    var billWithGB: String {
-        return "\(self) GB"
-    }
-    
-    var billWithMinutes: String {
-        return "\(self) Minutes"
-    }
-    
-    var billWithUnits: String {
-        return "\(self) Units"
-    }
-}
-
 /*
  Extension for String
  */
 extension String {
-    
-    var floatValue: Float {
-        return (self as NSString).floatValue
-    }
-    
-    var isValidNumber: Bool {
-        do {
-            let detector = try NSDataDetector(types: NSTextCheckingResult.CheckingType.phoneNumber.rawValue)
-            let matches = detector.matches(in: self, options: [], range: NSMakeRange(0, count))
-            if let res = matches.first {
-                return res.resultType == .phoneNumber && res.range.location == 0 && res.range.length == count && count == 10
-            } else {
-                return false
-            }
-        } catch {
-            return false
-        }
-    }
     
     func toDate(withFormat format: String = "yyyy-MM-dd") -> Date {
         let dateFormatter = DateFormatter()
@@ -111,26 +61,6 @@ extension String {
             preconditionFailure("Take a look to your format")
         }
         return date
-    }
-}
-
-/*
- Extension for Float
- */
-extension Float {
-    
-    var billWithDollar: String {
-        return String(format: "$%.2f", self)
-    }
-    
-    private static var numberFormatter: NumberFormatter = {
-        let numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .currency
-        return numberFormatter
-    }()
-    
-    var delimiter: String {
-        return Float.numberFormatter.string(from: NSNumber(value: self)) ?? ""
     }
 }
 
@@ -144,37 +74,6 @@ extension Date {
         dateFormatter.dateFormat = format
         return dateFormatter.string(from: self)
     }
-    
-    static func dateDifference(startDate: String, endDate: String) -> String {
-        let start = startDate.toDate()
-        let end = endDate.toDate()
-        let formatter = DateComponentsFormatter()
-        formatter.allowedUnits = [.month]
-        formatter.unitsStyle = .full
-        if let differenceString = formatter.string(from: start, to: end) {
-            return differenceString
-        }
-        return "No Date Found"
-    }
-}
-
-extension UIView {
-    /** Loads instance from nib with the same name. */
-    func loadNib() -> UIView {
-        let bundle = Bundle(for: type(of: self))
-        let nibName = type(of: self).description().components(separatedBy: ".").last!
-        let nib = UINib(nibName: nibName, bundle: bundle)
-        return nib.instantiate(withOwner: self, options: nil).first as! UIView
-    }
-    
-    func actionBlock(_ closure: @escaping() -> ()) {
-        let sleeve = ClosureSleeve(closure)
-        let recognizer = UITapGestureRecognizer(target: sleeve, action: #selector(ClosureSleeve.invoke))
-        addGestureRecognizer(recognizer)
-        isUserInteractionEnabled = true
-        
-        objc_setAssociatedObject(self, String(format: "[%d]", arc4random()), sleeve, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
-    }
 }
 
 extension UIScreen {
@@ -185,18 +84,6 @@ extension UIScreen {
     
     class var mainSize: CGSize {
         return mainBounds.size
-    }
-}
-
-class ClosureSleeve {
-    let closure: ()->()
-    
-    init (_ closure: @escaping ()->()) {
-        self.closure = closure
-    }
-    
-    @objc func invoke () {
-        closure()
     }
 }
 
