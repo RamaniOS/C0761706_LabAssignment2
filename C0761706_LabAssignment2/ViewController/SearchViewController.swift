@@ -128,7 +128,7 @@ extension CustomerListControl: UITableViewDelegate, UITableViewDataSource {
             }
         }
         
-        let editItem = UIContextualAction(style: .normal, title: "Add a day") {  (contextualAction, view, boolValue) in
+        let editDayItem = UIContextualAction(style: .normal, title: "Add a day") {  (contextualAction, view, boolValue) in
             let todo = self.items?[indexPath.row]
             self.persistenceManager.update(type: Todo.self, todo: todo!) { (todoObject) in
                 if let todo = todoObject as? Todo {
@@ -147,7 +147,7 @@ extension CustomerListControl: UITableViewDelegate, UITableViewDataSource {
         }
         var swipeActions = UISwipeActionsConfiguration()
         if todo!.totalDays > todo!.daysWorked  && !todo!.isDone {
-            swipeActions = UISwipeActionsConfiguration(actions: [deleteItem, editItem])
+            swipeActions = UISwipeActionsConfiguration(actions: [deleteItem, editDayItem])
         } else {
             swipeActions = UISwipeActionsConfiguration(actions: [deleteItem])
         }
