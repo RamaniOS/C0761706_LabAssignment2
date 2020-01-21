@@ -146,7 +146,7 @@ extension CustomerListControl: UITableViewDelegate, UITableViewDataSource {
             tableView.reloadData()
         }
         var swipeActions = UISwipeActionsConfiguration()
-        if todo!.totalDays > todo!.daysWorked {
+        if todo!.totalDays > todo!.daysWorked  && !todo!.isDone {
             swipeActions = UISwipeActionsConfiguration(actions: [deleteItem, editItem])
         } else {
             swipeActions = UISwipeActionsConfiguration(actions: [deleteItem])

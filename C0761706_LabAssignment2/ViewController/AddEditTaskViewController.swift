@@ -49,6 +49,8 @@ class AddEditTaskViewController: AbstractViewController {
             Helper.showAlert(with: "Please enter todo title.", controller: self)
         } else if !daysTextField.hasText {
             Helper.showAlert(with: "Please enter total number of days to complete todo.", controller: self)
+        } else if daysTextField.text == "0" {
+            Helper.showAlert(with: "Total number of days should be greater than zero.", controller: self)
         } else if !descTextView.hasText {
             Helper.showAlert(with: "Please enter todo desc.", controller: self)
         } else {
